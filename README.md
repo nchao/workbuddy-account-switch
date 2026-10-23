@@ -1,4 +1,6 @@
-# WorkBuddy 账号切换器
+# WbAccSwitch
+
+（WorkBuddy 多账号登录态切换器）
 
 一个 macOS 小工具：把 WorkBuddy 每个账号的登录态存成快照，换账号时一键还原，不用重复登录。
 
@@ -45,7 +47,7 @@ WorkBuddy 的登录态散落在好几个地方，而且**不同类型账号的�
 ## 使用
 
 ```bash
-./build_app.sh          # 编译并安装到 /Applications/WorkBuddy 账号切换.app
+./build_app.sh          # 编译并安装到 /Applications/WbAccSwitch.app
 ```
 
 第一次用：
@@ -57,8 +59,8 @@ WorkBuddy 的登录态散落在好几个地方，而且**不同类型账号的�
 命令行排查（不需要开界面）：
 
 ```bash
-"/Applications/WorkBuddy 账号切换.app/Contents/MacOS/wbswitch-gui" --probe
-"/Applications/WorkBuddy 账号切换.app/Contents/MacOS/wbswitch-gui" --save "档案名"
+"/Applications/WbAccSwitch.app/Contents/MacOS/wbswitch-gui" --probe
+"/Applications/WbAccSwitch.app/Contents/MacOS/wbswitch-gui" --save "档案名"
 ```
 
 `--probe` 会把三级票据探测链路整条打出来，用于排查
