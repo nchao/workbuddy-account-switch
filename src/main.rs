@@ -386,7 +386,7 @@ impl eframe::App for App {
                     .rect_filled(bar, egui::CornerRadius::same(2), pal.accent_solid);
                 ui.add_space(7.0);
                 ui.label(
-                    egui::RichText::new("当前账号")
+                    egui::RichText::new("WbAccSwitch")
                         .size(17.0)
                         .strong()
                         .color(pal.ink),
@@ -1043,7 +1043,7 @@ fn main() -> eframe::Result<()> {
         ..Default::default()
     };
     eframe::run_native(
-        "账号管家",
+        "WbAccSwitch",
         options,
         Box::new(|cc| {
             setup_fonts(&cc.egui_ctx);
