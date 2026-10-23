@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>WorkBuddy 账号切换</string>
+    <string>账号管家</string>
     <key>CFBundleDisplayName</key>
-    <string>WorkBuddy 账号切换</string>
+    <string>账号管家</string>
     <key>CFBundleIdentifier</key>
     <string>local.wbswitch.gui</string>
     <key>CFBundleExecutable</key>

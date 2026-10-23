@@ -47,6 +47,7 @@ struct Pal {
     accent: egui::Color32,       // 强调色（文字/描边）
     accent_solid: egui::Color32, // 强调色实心（主按钮底）
     accent_fill: egui::Color32,  // 强调色浅底（当前账号卡）
+    ink: egui::Color32,          // 主文字色（比默认更沉稳，用于标题）
     danger: egui::Color32,
     danger_fill: egui::Color32,
     warn: egui::Color32,
@@ -64,6 +65,7 @@ impl Pal {
                 accent: egui::Color32::from_rgb(0x5D, 0xCA, 0xA5),
                 accent_solid: egui::Color32::from_rgb(0x1D, 0x9E, 0x75),
                 accent_fill: egui::Color32::from_rgba_unmultiplied(0x1D, 0x9E, 0x75, 46),
+                ink: egui::Color32::from_rgb(0xEC, 0xE8, 0xE1),
                 danger: egui::Color32::from_rgb(0xF0, 0x95, 0x95),
                 danger_fill: egui::Color32::from_rgba_unmultiplied(0xE2, 0x4B, 0x4A, 46),
                 warn: egui::Color32::from_rgb(0xFA, 0xC7, 0x75),
@@ -77,6 +79,7 @@ impl Pal {
                 accent: egui::Color32::from_rgb(0x0F, 0x6E, 0x56),
                 accent_solid: egui::Color32::from_rgb(0x0F, 0x6E, 0x56),
                 accent_fill: egui::Color32::from_rgb(0xE1, 0xF5, 0xEE),
+                ink: egui::Color32::from_rgb(0x26, 0x24, 0x20),
                 danger: egui::Color32::from_rgb(0xA3, 0x2D, 0x2D),
                 danger_fill: egui::Color32::from_rgb(0xFC, 0xEB, 0xEB),
                 warn: egui::Color32::from_rgb(0x85, 0x4F, 0x0B),
@@ -377,7 +380,17 @@ impl eframe::App for App {
 
             // ══════════ 顶栏 ══════════
             ui.horizontal(|ui| {
-                ui.heading("当前账号");
+                // 强调色竖条 + 深色标题，比默认 heading 更有设计感
+                let (bar, _) = ui.allocate_exact_size(egui::vec2(4.0, 17.0), egui::Sense::hover());
+                ui.painter()
+                    .rect_filled(bar, egui::CornerRadius::same(2), pal.accent_solid);
+                ui.add_space(7.0);
+                ui.label(
+                    egui::RichText::new("当前账号")
+                        .size(17.0)
+                        .strong()
+                        .color(pal.ink),
+                );
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.checkbox(&mut self.auto_launch, egui::RichText::new("自动启动").strong());
                     if ui.add(ghost_btn("刷新", pal.accent, &pal)).clicked() {
@@ -1030,7 +1043,7 @@ fn main() -> eframe::Result<()> {
         ..Default::default()
     };
     eframe::run_native(
-        "WorkBuddy 账号切换器",
+        "账号管家",
         options,
         Box::new(|cc| {
             setup_fonts(&cc.egui_ctx);

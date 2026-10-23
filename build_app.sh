@@ -24,4 +24,7 @@ chmod +x "$APP/Contents/MacOS/wbswitch-gui"
 touch "$APP"
 
 echo "✓ 已安装：$APP"
-echo "  用 Spotlight 搜索「WorkBuddy 账号切换」即可打开"
+echo "  Spotlight 搜索「账号管家」即可打开"
+# 刷新 LaunchServices，保证 Dock 显示新名字与新图标
+/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$APP" >/dev/null 2>&1 || true
+killall Dock >/dev/null 2>&1 || true
