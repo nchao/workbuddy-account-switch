@@ -377,7 +377,7 @@ impl eframe::App for App {
 
             // ══════════ 顶栏 ══════════
             ui.horizontal(|ui| {
-                ui.heading("WorkBuddy 账号切换");
+                ui.heading("当前账号");
                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
                     ui.checkbox(&mut self.auto_launch, egui::RichText::new("自动启动").strong());
                     if ui.add(ghost_btn("刷新", pal.accent, &pal)).clicked() {

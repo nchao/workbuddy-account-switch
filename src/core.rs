@@ -1693,6 +1693,7 @@ mod tests {
             }
             Err(e) => println!("自检保存失败：{}", e),
         }
+        let _ = delete_profile(name); // 自检档案不留残渣
     }
 
     /// 「后悔药」：当前登录时会自动留存一份有效登录态
